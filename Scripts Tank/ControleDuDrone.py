@@ -32,7 +32,7 @@ t = time.time()
 print ('début du script')
 
 # Boncle principale
-while(True & (time.time() - t < 20)):
+while(True):
     
     
     # détection interactions utilisateur (codé ici car pratique avec opencv)
@@ -41,17 +41,17 @@ while(True & (time.time() - t < 20)):
     
     # début mission
     if k == ord('s'):
-      print 'start'
+      print ('start')
     # arrêt mission
     if k == ord('a'):
-      print 'abort'
+      print ('abort')
     # arrêt hard mission
     if k == ord('e'):
-      print 'emergency'
+      print ('emergency')
     # fin du programme
     if k == ord('q'):
-      print 'quit'
+      print ('quit')
     if k == ord('m'):
-      print 'manuel'
-     
+      print ('manuel')
+print ('fin du script')
    
