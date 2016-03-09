@@ -6,7 +6,7 @@ Created on Wed Mar  9 10:51:22 2016
 """
 import socket
 Sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-
+socket.bind(('', 234))
 # On est a l'ecoute d'une seule et unique connexion :
 Sock.listen(1)
  
