@@ -18,7 +18,10 @@ while True:
 
         response = client.recv(255)
         if response != "":
-                print response
+            print response
+        client.close()
+        if response = "":
+            break
 
 print "Close"
 client.close()
