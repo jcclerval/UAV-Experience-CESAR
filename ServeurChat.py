@@ -6,12 +6,7 @@ Created on Wed Mar  9 10:51:22 2016
 """
 import socket
 Sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
-Host = 'bord3l' # l'ip locale de l'ordinateur
-Port = 234         # choix d'un port
- 
-# on bind notre socket :
-Sock.bind((Host,Port))
- 
+
 # On est a l'ecoute d'une seule et unique connexion :
 Sock.listen(1)
  
