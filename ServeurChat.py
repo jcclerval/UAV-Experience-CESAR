@@ -12,7 +12,7 @@ socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.bind(('', 15555))
 
 while True:
-        socket.listen(5)
+        socket.listen(7)
         client, address = socket.accept()
         print "{} connected".format( address )
 
@@ -25,4 +25,4 @@ while True:
 
 print "Close"
 client.close()
-stock.close()
+socket.close()

@@ -24,4 +24,4 @@ while True:
 
 print "Close"
 client.close()
-stock.close()
+socket.close()

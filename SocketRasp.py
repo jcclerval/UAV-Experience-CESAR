@@ -20,7 +20,7 @@ fermer = 1
 while fermer:
     variable = input("Entrez un texte : ")
     socket.send(variable)
-    if variable = "":
+    if variable == "":
         break
 
 print "Close"
