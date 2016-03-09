@@ -16,7 +16,7 @@ while True:
         client, address = socket.accept()
         print "{} connected".format( address )
         response = ""
-            while response != 'quit':
+            while( response != "quit"):
                 response = client.recv(255)
                 if response != "":
                     print response
