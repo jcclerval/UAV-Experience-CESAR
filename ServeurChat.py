@@ -15,14 +15,16 @@ while True:
         socket.listen(7)
         client, address = socket.accept()
         print "{} connected".format( address )
-
-        response = client.recv(255)
-        if response != "":
-            print response
+            while response != 'quit':
+                response = client.recv(255)
+                if response != "":
+                    print response
+                client.close()
+                if response == 'quit':
+                    break
         client.close()
-        if response == 'quit':
-            break
+        socket.close()
+        print('Connexion terminée')
 
 print "Close"
 client.close()
-socket.close()
