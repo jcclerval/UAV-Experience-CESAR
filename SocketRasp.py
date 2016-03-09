@@ -15,10 +15,14 @@ port = 15555
 
 socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 socket.connect((hote, port))
+
+
 print "Connection on {}".format(port)
 fermer = 1
 while fermer:
-    variable = input("Entrez un texte : ")
+    
+    variable = raw_input("Entrez un texte : ")
+    
     socket.send(variable)
     if variable == "":
         break

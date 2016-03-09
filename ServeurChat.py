@@ -20,7 +20,7 @@ while True:
         if response != "":
             print response
         client.close()
-        if response == "":
+        if response == 'quit':
             break
 
 print "Close"
