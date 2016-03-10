@@ -8,13 +8,19 @@ Created on Wed Mar  9 10:09:02 2016
 #!/usr/bin/env python
 # coding: utf-8
 import socket
+import serial
+
+# Creation du Socket ----------------------------------------------------------
 Sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 Sock.bind(('', 15550))
 
+# Creation du Serial ----------------------------------------------------------
+ser = serial.Serial('/dev/ttyACM0', 9600)
+
+
 # On est a l'ecoute d'une seule et unique connexion ---------------------------
 Sock.listen(1)
- 
- 
+
 # Le script se stoppe ici jusqu'a ce qu'il y ait connexion --------------------
 client, adresse = Sock.accept()                                                # accepte les connexions de l'exterieur
 print "L'adresse",adresse,"vient de se connecter au serveur !"
@@ -26,6 +32,23 @@ while 1:
 
     if (RequeteDuClient =='quit'):
         break
+
+    if (RequeteDuClient == "avant"):
+        ser.write(str("avant"))
+        
+    if (RequeteDuClient == "arriere"):
+        ser.write(str("arriere"))
+
+    if (RequeteDuClient == "gauche"):
+        ser.write(str("gauche"))
+
+    if (RequeteDuClient == "droit"):
+        ser.write(str("droit"))
+    """ Lorsque l'on sera plutot sur de nous        
+    ser.write(str(compteur))
+    """
+        
+    
     
 client.close()
 Sock.close()
