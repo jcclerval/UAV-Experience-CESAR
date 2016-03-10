@@ -7,24 +7,26 @@ Created on Wed Mar  9 10:09:02 2016
 
 #!/usr/bin/env python
 # coding: utf-8
+import socket
+Sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
+Sock.bind(('', 15550))
 
-import socket # on importe le module
-Sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM) # on cree notre socket
+# On est a l'ecoute d'une seule et unique connexion ---------------------------
+Sock.listen(1)
  
-# definition des informations :
-Host = 'bord3l'
-Port = 15555
  
-# on se connecte sur le serveur avec les informations ci-dessus
-# assurez-vous d'avoir mis en marche le serveur !
-Sock.connect((Host,Port))
- 
-# On est connecte, on fait une boucle infinie d'inputs pour l'envoi des messages :
+# Le script se stoppe ici jusqu'a ce qu'il y ait connexion --------------------
+client, adresse = Sock.accept()                                                # accepte les connexions de l'exterieur
+print "L'adresse",adresse,"vient de se connecter au serveur !"
 while 1:
-        msg = raw_input('(quit pour fermer) >> ')  # on rentre des donnees
-        Sock.send(msg) # on envoie ces donnees
-        if (msg =='quit'):
-            print("Fermeture de la connexion")
-            break
- 
-# regardez ce qui se passe du cote serveur.
+    RequeteDuClient = client.recv(255)                                         # on recoit 255 caracteres grand max
+    if not RequeteDuClient:                                                    # si on ne recoit plus rien
+        break                                                                  # on break la boucle (sinon les bips vont se repeter)
+    print RequeteDuClient,"\a"                                                 # affiche les donnees envoyees, suivi d'un bip sonore
+
+    if (RequeteDuClient =='quit'):
+        break
+    
+client.close()
+Sock.close()
+print('Fin de la connexion')
