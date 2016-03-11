@@ -15,7 +15,7 @@ Sock = socket.socket(socket.AF_INET,socket.SOCK_STREAM)
 Sock.bind(('', 15550))
 
 # Creation du Serial ----------------------------------------------------------
-ser = serial.Serial('/dev/ttyACM0', 9600)
+ser = serial.Serial('/dev/ttyACM0',9600)
 
 
 # On est a l'ecoute d'une seule et unique connexion ---------------------------
@@ -34,20 +34,19 @@ while 1:
         break
 
     if (RequeteDuClient == "avant"):
-        ser.write(str("avant"))
+    	ser.write(str("z"))
         
     if (RequeteDuClient == "arriere"):
-        ser.write(str("arriere"))
+        ser.write(str("s"))
 
     if (RequeteDuClient == "gauche"):
-        ser.write(str("gauche"))
+        ser.write(str("q"))
 
     if (RequeteDuClient == "droit"):
-        ser.write(str("droit"))
-    """ Lorsque l'on sera plutot sur de nous        
-    ser.write(str(compteur))
-    """
-        
+        ser.write(str("d"))
+ 
+    if (RequeteDuClient == "stop"):
+	ser.write(str("u"))    
     
     
 client.close()
